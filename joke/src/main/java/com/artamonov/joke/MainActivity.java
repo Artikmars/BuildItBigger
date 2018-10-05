@@ -1,15 +1,11 @@
-package com.udacity.gradle.builditbigger;
+package com.artamonov.joke;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
-import com.artamonov.jokes.Jokes;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,13 +13,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        Toast.makeText(this, intent.getStringExtra("joke"), Toast.LENGTH_SHORT).show();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -40,21 +38,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void tellJoke(View view) {
-        Jokes jokes = new Jokes();
-        String wizardJoke = jokes.getJoke();
-        Intent intent = null;
-        try {
-            intent = new Intent(this,
-                    Class.forName("com.artamonov.joke.MainActivity"));
-            intent.putExtra("joke", wizardJoke);
-            startActivity(intent);
-        } catch (ClassNotFoundException e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        //Toast.makeText(this, wizardJoke, Toast.LENGTH_SHORT).show();
     }
 
 
