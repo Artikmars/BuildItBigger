@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String result;
+    private static String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
