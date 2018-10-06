@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.free;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.artamonov.jokes.Jokes;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.udacity.gradle.builditbigger.GoogleEndpointsAsyncTask;
+import com.udacity.gradle.builditbigger.R;
 
 
 /**
@@ -27,13 +29,12 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        if (!BuildConfig.is_paid) {
-            AdView mAdView = root.findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .build();
-            mAdView.loadAd(adRequest);
-        }
+        AdView mAdView = root.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+
 
         Button button = root.findViewById(R.id.btn_tellJoke);
         button.setOnClickListener(new View.OnClickListener() {
