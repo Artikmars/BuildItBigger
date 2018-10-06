@@ -5,16 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_result_main);
         Intent intent = getIntent();
-        Toast.makeText(this, intent.getStringExtra("joke"), Toast.LENGTH_SHORT).show();
+        result = intent.getStringExtra("joke");
+        TextView textView = findViewById(R.id.tv_joke);
+        textView.setText(result);
     }
 
 

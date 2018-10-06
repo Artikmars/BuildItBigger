@@ -36,7 +36,6 @@ public class MainActivityFragment extends Fragment {
                 .build();
         mAdView.loadAd(adRequest);
 
-
         Button button = root.findViewById(R.id.btn_tellJoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +55,6 @@ public class MainActivityFragment extends Fragment {
                 new GoogleEndpointsAsyncTask().execute(new Pair<Context, String>(getActivity(), wizardJoke));
             }
         });
-
         return root;
     }
 
