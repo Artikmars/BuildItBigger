@@ -9,14 +9,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String result;
+    public static final String JOKE_TAG = "JOKE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_main);
         Intent intent = getIntent();
-        result = intent.getStringExtra("joke");
+        String result;
+        if (intent.hasExtra(JOKE_TAG)) {
+            result = intent.getStringExtra(JOKE_TAG);
+        } else {
+            result = null;
+        }
         TextView textView = findViewById(R.id.tv_joke);
         textView.setText(result);
     }
